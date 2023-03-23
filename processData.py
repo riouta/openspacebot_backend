@@ -1,6 +1,6 @@
 import json
 from time import sleep
-import onoff
+from gpiozero import LED
 
 
 def ProcessData(data):
@@ -11,15 +11,15 @@ def ProcessData(data):
     print(data)
     if data["Led"]==1:
         #allumer led
-        Led.on()
+        led.on()
         pass
     else:
         #éteindre led
-        Led.off()
+        led.off()
         pass
 
 #initialize Gpio pins for Led
-Led= onoff.Gpio(21,"out")
+led1 = LED(21)
 
 #read initial data from json file
 with open("data.json",'r') as f: #si data.json est situé autre part écris le chemin complet
